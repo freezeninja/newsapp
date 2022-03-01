@@ -22,7 +22,6 @@ export default class News extends Component {
             errMsg: 'No Articles Found on this keyword',
             isErrorShow: false
         }
-        this.textInput = React.createRef();
     };
 
     txtChange = (e)=>{
@@ -89,12 +88,12 @@ export default class News extends Component {
         return (
             <>
                 <div className="container">
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between everything_Flex">
                         <div className="input-group mb-3">
                             <span className="input-group-text" id="inputGroup-sizing-default">Keywords</span>
                             <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" onChange={this.txtChange} value={this.state.keywrds} />
                         </div>
-                        <div>
+                        <div className="mb-3">
                             <select className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" onChange={this.srtChange} value={this.state.srting}>
                                 <option value="publishedAt">Published At</option>
                                 <option value="popularity">Popularity</option>
@@ -110,7 +109,7 @@ export default class News extends Component {
                     </div>
                     <h3 className="text-muted text-center mb-5">Your News</h3>
                     {
-                        this.state.articles.length == 0 && !this.state.loader && <div className="errmsg text-center">
+                        this.state.articles.length === 0 && !this.state.loader && <div className="errmsg text-center">
                                 {this.state.errMsg}
                             </div>
                     }
@@ -118,7 +117,7 @@ export default class News extends Component {
                         {this.state.loader && <div className="loading text-center">
                             <Spinner />
                         </div>}
-                        {this.state.apiData && this.state.articles.length != 0 &&<>
+                        {this.state.apiData && this.state.articles.length !== 0 &&<>
                             <div className="row mb-4 mt-4">
                                 {
                                     this.state.articles.map((element) => {
